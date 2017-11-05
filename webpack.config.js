@@ -5,7 +5,7 @@ const webpack = require('webpack'),
 module.exports = {
   entry: {
     vendor: ['jquery'],
-    main: path.resolve(conf.scripts.dev+'main.js')
+    main: path.resolve(conf.scripts.dev + 'main.js')
   },
   output: {
     filename: 'bundle.[name].js',
@@ -18,10 +18,6 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-          query: {
-            presets: ['es2015'],
-            plugins: ['transform-runtime']
-          },
         exclude: /node_modules/
       }
     ]
