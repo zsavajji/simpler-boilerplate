@@ -25,7 +25,9 @@
     "babel-core": "6.26.0",
     "babel-loader": "7.1.2",
     "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.1",
     "babel-preset-es2015": "6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
     "browser-sync": "2.18.13",
     "concurrently": "3.5.0",
     "cross-conf-env": "1.1.2",
@@ -79,7 +81,7 @@
     "build:css": "npm run build:sassprod && cross-conf-env postcss ${npm_package_config_styles_dist}styles.css --use autoprefixer -b 'last 2 versions' --no-map -o ${npm_package_config_styles_dist}styles.css && cross-conf-env postcss ${npm_package_config_styles_dist}styles.css --use cssnano --no-map  -o ${npm_package_config_styles_dist}styles.css",
     "build:views": "cross-conf-env pug -O ./options.json $npm_package_config_views_dev -o $npm_package_config_views_dist",
     "optimize:images": "node ./imagemin.js",
-    "build:prod": "npm run build:scripts -- -p && npm run build:css && npm run optimize:images",
+    "build:prod": "npm run build:scripts -- -p && npm run build:views && npm run build:css && npm run optimize:images",
     "build:dev": "npm run reset && npm run build:scripts -- --bail && npm run build:styles && npm run build:views && npm run optimize:images",
     "serve": "cross-conf-env browser-sync start -s $npm_package_config_dist -f '**/*.html', '**/*.css', '**/*.js'",
     "start": "npm run reset && npm run optimize:images && concurrently -kr 'npm run watch:all' 'npm run serve'"
